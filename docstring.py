@@ -51,10 +51,11 @@ def construct_docstring(declaration, indent=0):
         elif typename == "def":
             if len(params):
                 for param in params:
-                    lines.append(":param %s: [description]\n" % (param))
-                    lines.append(":type %s: [type]\n" % (param))
+                    lines.append(":param %s: \n" % (param))
+                    lines.append(":type %s: \n" % (param))
                 # lines.append("\n")
-            lines.append(":returns: [description]\n")
+            lines.append(":returns: \n")
+            lines.append(":raises: \n")
         lines.append('"""\n')
 
         for line in lines:
@@ -309,6 +310,14 @@ class DocstringCommand(sublime_plugin.TextCommand):
                             edit,
                             declaration_region.end() + 2,
                             docstring
+                        )
+                        self.view.sel().clear()
+                        self.view.sel().add(
+                            sublime.Region(
+                                declaration_region.end() + indent + 5,
+                                declaration_region.end() + indent +
+                                5 + len('[description]')
+                            )
                         )
                     except Exception:
                         pass
