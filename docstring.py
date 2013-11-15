@@ -43,9 +43,8 @@ def construct_docstring(declaration, indent=0):
     try:
         typename, name, params = declaration
         lines = []
-        lines.append('"""[description]\n')
-        lines.append(":summary: \n")
-        # lines.append("\n")
+        lines.append('"""[description]\n\n')
+        # lines.append(":summary: \n")
         if typename == "class":
             pass
         elif typename == "def":
