@@ -54,7 +54,7 @@ def construct_docstring(declaration, indent=0):
                 # lines.append("\n")
             lines.append(":returns: \n")
             lines.append(":raises: \n")
-        lines.append('"""\n')
+        lines.append('\n"""\n')
 
         for line in lines:
             docstring += " " * indent + line
